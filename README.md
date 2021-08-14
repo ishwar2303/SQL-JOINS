@@ -2,6 +2,7 @@
 ```sql
 CREATE DATABASE BASIC;
 ```
+![STUDENT TABLE](https://github.com/ishwar2303/SQL-JOINS/blob/main/screenshots/COLLEGES-TABLE.PNG)
 
 ## Use database
 ```sql
