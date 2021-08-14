@@ -2,7 +2,6 @@
 ```sql
 CREATE DATABASE BASIC;
 ```
-![STUDENT TABLE](https://github.com/ishwar2303/SQL-JOINS/blob/main/screenshots/COLLEGES-TABLE.PNG)
 
 ## Use database
 ```sql
@@ -120,6 +119,24 @@ INSERT INTO `students` VALUES
 (NULL, 'VEERU', 'VEERU@GMAIL.COM', 'M', 1, 1);
 ```
 
+## View Students table
+```sql
+SELECT * FROM STUDENTS;
+```
+![STUDENTS TABLE](https://github.com/ishwar2303/SQL-JOINS/blob/main/screenshots/STUDENTS-TABLE.PNG)
+
+## View Courses table
+```sql
+SELECT * FROM COURSES;
+```
+![STUDENTS TABLE](https://github.com/ishwar2303/SQL-JOINS/blob/main/screenshots/COURSES-TABLE.PNG)
+
+## View Colleges table
+```sql
+SELECT * FROM COLLEGES;
+```
+![STUDENTS TABLE](https://github.com/ishwar2303/SQL-JOINS/blob/main/screenshots/COLLEGES-TABLE.PNG)
+
 ## JOIN Students and Colleges table to see which student belongs to which college
 ```sql
 SELECT 
@@ -129,6 +146,8 @@ STUDENTS AS S INNER JOIN COLLEGES AS C
 ON
 S.COLLEGE_ID = C.COLLEGE_ID;
 ```
+![STUDENT-COLLEGE](https://github.com/ishwar2303/SQL-JOINS/blob/main/screenshots/STUDENT-COLLEGE-JOIN.PNG)
+
 ## JOIN Students and Courses table to see in which course a particular student has enrolled
 ```sql
 
@@ -139,6 +158,7 @@ STUDENTS AS S INNER JOIN COURSES AS C
 ON
 S.COURSE_ID = C.COURSE_ID;
 ```
+![STUDENT-COURSE](https://github.com/ishwar2303/SQL-JOINS/blob/main/screenshots/STUDENT-COURSE-JOIN.PNG)
 
 ## JOIN Students, Colleges and Courses to see which course is enrolled by student in the college
 ```sql
@@ -153,6 +173,7 @@ INNER JOIN COLLEGES AS COL
 ON
 S.COLLEGE_ID = COL.COLLEGE_ID;
 ```
+![STUDENT-COLLEGE-COURSE](https://github.com/ishwar2303/SQL-JOINS/blob/main/screenshots/STUDENT-COLLEGE-COURSE.PNG)
 
 ## Use GROUP BY to group students by course
 ### To see Number of students enrolled in a particular course 
@@ -179,21 +200,25 @@ ON
 S.COLLEGE_ID = C.COLLEGE_ID
 GROUP BY C.COLLEGE_ID;
 ```
+![NO-OF-STUDENTS-IN-COLLEGE](https://github.com/ishwar2303/SQL-JOINS/blob/main/screenshots/NUMBER-OF-STUDENTS-IN-A-COLLEGE.PNG)
 
 ## Total number of students
 ```sql
 SELECT COUNT(ID) AS TOTAL_NUMBER_OF_STUDENTS_IN_ALL_COLLEGES FROM STUDENTS;
 ```
+![NO-OF-STUDENTS](https://github.com/ishwar2303/SQL-JOINS/blob/main/screenshots/TOTAL-STUDENTS.PNG)
 
 ## Total number of male students
 ```sql
 SELECT COUNT(ID) AS TOTAL_MALE_STUDENTS_IN_ALL_COLLEGES FROM STUDENTS WHERE GENDER = 'M';
 ```
+![MALE](https://github.com/ishwar2303/SQL-JOINS/blob/main/screenshots/TOTAL-MALE-STUDENTS.PNG)
 
 ## Total number of female students 
 ```sql
 SELECT COUNT(ID) AS TOTAL_FEMALE_STUDENTS_IN_ALL_COLLEGES FROM STUDENTS WHERE GENDER = 'F';
 ```
+![FEMALE](https://github.com/ishwar2303/SQL-JOINS/blob/main/screenshots/TOTAL-FEMALE-STUDENTS.PNG)
 
 ## Number of male and female students college wise
 ```sql
@@ -208,3 +233,23 @@ S.COLLEGE_ID = C.COLLEGE_ID
 GROUP BY C.COLLEGE_ID
 ORDER BY C.COLLEGE_ID;
 ```
+![MALE-FEMALE](https://github.com/ishwar2303/SQL-JOINS/blob/main/screenshots/NUMBER-OF-MALE-FEMALE-STUDENTS-COLLEGE-WISE.PNG)
+
+## Number of students course wise in a college
+```sql
+
+SELECT 
+	COLLEGE_NAME,
+	COURSE_NAME,
+	COUNT(COU.COURSE_ID) AS NUMBER_OF_STUDENTS
+FROM
+STUDENTS AS S INNER JOIN COURSES AS COU
+ON
+S.COURSE_ID = COU.COURSE_ID
+INNER JOIN COLLEGES AS COL
+ON
+S.COLLEGE_ID = COL.COLLEGE_ID
+GROUP BY COU.COURSE_ID, COL.COLLEGE_ID
+ORDER BY COL.COLLEGE_ID;
+```
+![COURSE-WISE](https://github.com/ishwar2303/SQL-JOINS/blob/main/screenshots/NUMBER-OF-STUDENTS-COURSE-WISE-IN-A-COLLEGE.PNG)
