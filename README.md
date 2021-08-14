@@ -146,7 +146,7 @@ STUDENTS AS S INNER JOIN COLLEGES AS C
 ON
 S.COLLEGE_ID = C.COLLEGE_ID;
 ```
-![STUDENT-COLLEGE](https://github.com/ishwar2303/SQL-JOINS/blob/main/screenshots/STUDENT-COLLEGE-JOIN.PNG)
+<!-- ![STUDENT-COLLEGE](https://github.com/ishwar2303/SQL-JOINS/blob/main/screenshots/STUDENT-COLLEGE-JOIN.PNG) -->
 
 ## JOIN Students and Courses table to see in which course a particular student has enrolled
 ```sql
@@ -158,7 +158,7 @@ STUDENTS AS S INNER JOIN COURSES AS C
 ON
 S.COURSE_ID = C.COURSE_ID;
 ```
-![STUDENT-COURSE](https://github.com/ishwar2303/SQL-JOINS/blob/main/screenshots/STUDENT-COURSE-JOIN.PNG)
+<!-- ![STUDENT-COURSE](https://github.com/ishwar2303/SQL-JOINS/blob/main/screenshots/STUDENT-COURSE-JOIN.PNG) -->
 
 ## JOIN Students, Colleges and Courses to see which course is enrolled by student in the college
 ```sql
@@ -173,7 +173,7 @@ INNER JOIN COLLEGES AS COL
 ON
 S.COLLEGE_ID = COL.COLLEGE_ID;
 ```
-![STUDENT-COLLEGE-COURSE](https://github.com/ishwar2303/SQL-JOINS/blob/main/screenshots/STUDENT-COLLEGE-COURSE.PNG)
+<!-- ![STUDENT-COLLEGE-COURSE](https://github.com/ishwar2303/SQL-JOINS/blob/main/screenshots/STUDENT-COLLEGE-COURSE.PNG) -->
 
 ## Use GROUP BY to group students by course
 ### To see Number of students enrolled in a particular course 
