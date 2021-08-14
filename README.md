@@ -1,1 +1,154 @@
-# SQL-JOINS
+## Create database
+```sql
+CREATE DATABASE BASIC;
+```
+
+## Use database
+```sql
+USE BASIC;
+```
+
+## Create table courses
+```sql
+CREATE TABLE COURSES (
+	COURSE_ID INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+	COURSE_NAME VARCHAR(30) NOT NULL
+);
+```
+
+## Create table colleges
+```sql
+CREATE TABLE COLLEGES (
+	COLLEGE_ID INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+	COLLEGE_NAME VARCHAR(50) NOT NULL
+);
+```
+
+## Create table students
+```sql
+CREATE TABLE STUDENTS (
+	ID INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+	NAME VARCHAR(50) NOT NULL,
+	EMAIL VARCHAR(50) NOT NULL UNIQUE,
+	COLLEGE_ID INT,
+	COURSE_ID INT 
+);
+```
+
+## Add Foreign Constraints
+```sql
+ALTER TABLE STUDENTS ADD FOREIGN KEY (COURSE_ID) REFERENCES COURSES(COURSE_ID);
+ALTER TABLE STUDENTS ADD FOREIGN KEY (COLLEGE_ID) REFERENCES COLLEGES(COLLEGE_ID);
+```
+
+
+## Insert records in courses table
+```sql
+INSERT INTO `courses` VALUES
+(NULL, 'BE/B.Tech'),
+(NULL, 'B.Arch'),
+(NULL, 'BCA'),
+(NULL, 'B.Sc'),
+(NULL, 'BPharma'),
+(NULL, 'BDS');
+```
+
+## Insert records in colleges table
+```sql
+INSERT INTO `colleges` VALUES
+(NULL, 'AMITY INSTITUTE OF EDUCATION'),
+(NULL, 'SRM UNIVERSITY'),
+(NULL, 'INDIAN INSTITUTE OF TECHNOLOGY'),
+(NULL, 'MANIPAL UNIVERSITY'),
+(NULL, 'BIRLA INSTITUTE OF TECHNOLOGY'),
+(NULL, 'DELHI UNIVERSITY');
+```
+
+
+## Insert records in students table
+```sql
+INSERT INTO `students` VALUES
+(NULL, 'SAMEER', 'SAMEER.K@GMAIL.COM', 2, 3),
+(NULL, 'KARAN', 'KARAN@GMAIL.COM', 1, 5),
+(NULL, 'AJAY', 'AJAY@GMAIL.COM', 1, 2),
+(NULL, 'VIJAY', 'VIJAY@GMAIL.COM', 2, 2),
+(NULL, 'VISHAL', 'VISHAL@GMAIL.COM', 1, 5),
+(NULL, 'SHUBHAM', 'SHUBHAM@GMAIL.COM', 3, 4),
+(NULL, 'TRISHA', 'TRISHA@GMAIL.COM', 5, 1),
+(NULL, 'TAPAS', 'TAPAS@GMAIL.COM', 5, 5),
+(NULL, 'SUNDAR', 'SUNDAR@GMAIL.COM', 4, 4),
+(NULL, 'JATIN', 'JATIN@GMAIL.COM', 1, 1),
+(NULL, 'MARUT', 'MARUT@GMAIL.COM', 1, 4),
+(NULL, 'RHYTHM', 'RHYTHM@GMAIL.COM', 4, 1),
+(NULL, 'ARJUN', 'ARJUN@GMAIL.COM', 1, 3),
+(NULL, 'BHEEM', 'BHEEM@GMAIL.COM', 4, 6),
+(NULL, 'CHETAN', 'CHETAN@GMAIL.COM', 3, 6),
+(NULL, 'DINESH', 'DINESH@GMAIL.COM', 6, 1),
+(NULL, 'FARAN', 'FARAN@GMAIL.COM', 6, 3),
+(NULL, 'HIMESH', 'HIMESH@GMAIL.COM', 6, 2),
+(NULL, 'ISHAN', 'ISHAN@GMAIL.COM', 3, 5),
+(NULL, 'MOHAN', 'MOHAN@GMAIL.COM', 3, 2);
+```
+
+## JOIN Students and Colleges table to see which student belongs to which college
+```sql
+SELECT 
+	*
+FROM
+STUDENTS AS S INNER JOIN COLLEGES AS C
+ON
+S.COLLEGE_ID = C.COLLEGE_ID;
+```
+## JOIN Students and Courses table to see in which course a particular student has enrolled
+```sql
+
+SELECT 
+	*
+FROM
+STUDENTS AS S INNER JOIN COURSES AS C
+ON
+S.COURSE_ID = C.COURSE_ID;
+```
+
+## JOIN Students, Colleges and Courses to see which course is enrolled by student in the college
+```sql
+
+SELECT 
+	*
+FROM
+STUDENTS AS S INNER JOIN COURSES AS COU
+ON
+S.COURSE_ID = COU.COURSE_ID
+INNER JOIN COLLEGES AS COL
+ON
+S.COLLEGE_ID = COL.COLLEGE_ID;
+```
+
+## Use GROUP BY to group students by course
+### To see Number of students enrolled in a particular course 
+```sql
+SELECT 
+	COUNT(C.COURSE_ID) AS NUMBER_OF_STUDENTS,
+	COURSE_NAME
+FROM
+STUDENTS S INNER JOIN COURSES C
+ON
+S.COURSE_ID = C.COURSE_ID
+GROUP BY C.COURSE_ID;
+```
+
+## Use GROUP BY to group students by college
+### To see Number of students in a particular college
+```sql
+SELECT 
+	COUNT(C.COLLEGE_ID) AS NUMBER_OF_STUDENTS,
+	COLLEGE_NAME
+FROM
+STUDENTS S INNER JOIN COLLEGES C
+ON
+S.COLLEGE_ID = C.COLLEGE_ID
+GROUP BY C.COLLEGE_ID;
+```
+
+
+
